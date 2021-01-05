@@ -49,14 +49,23 @@ function buildCharts(sample) {
             }
         }];
         Plotly.newPlot("bubble", bubbleData);
-    })
+    
         // Parse and filter the data to get the sample's OTU data
         // Pay attention to what data is required for each chart
-
+        
         // Create bar chart in correct location
-
+        var barChart = [{
+            x: sampleValues.slice(0,10).reverse(),
+            y: otuId.slice(0,10).map(otuId=>`OTU ${otuId}`).reverse(),
+            text: otuLables.slice(0,10).reverse(),
+            type: "bar",
+            orientation: "h"
+          }
+        ];
+         
+        Plotly.newPlot("bar", barChart);
         // Create bubble chart in correct location
-
+    })
 }
 
 // Define function that will run on page load
